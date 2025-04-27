@@ -1,0 +1,25 @@
+###
+#
+[root@topeet:~/10/module]# insmod file.ko 
+[ 6129.462048] alloc_chrdev_region is ok
+[ 6129.462109] major is 236
+[ 6129.462116] mi[rnoot@topeet:~/10/module]# or is 0
+[ 6129.462128] cdev_add is ok
+
+[root@topeet:~/10/module]# 
+[root@topeet:~/10/module]# ls /dev/test -al
+crw------- 1 root root 236, 0 Apr 24 17:40 /dev/test
+[root@topeet:~/10/module]# 
+[root@topeet:~/10/module]# cd ../app/
+[root@topeet:~/10/app]# ./app
+[ 6180.652985] This is cdev_test_open
+[ 6180.653072] This is cdev_test_w[root@topeetr:~/10/app]# ite
+[ 6180.653083] kbuf is nihao
+[ 6180.653097] This is cdev_test_release
+
+[root@topeet:~/10/app]# 
+[root@topeet:~/10/app]# rmmod  file.ko
+[ 6209.419374] module exit
+[root@topeet:~/10/app]#
+
+

@@ -1,0 +1,134 @@
+[root@topeet:/]# cat /proc/devices
+Character devices:
+  1 mem
+  4 /dev/vc/0
+  4 tty
+  4 ttyS
+  5 /dev/tty
+  5 /dev/console
+  5 /dev/ptmx
+  7 vcs
+ 10 misc
+ 13 input
+ 29 fb
+ 81 video4linux
+ 89 i2c
+ 90 mtd
+108 ppp
+116 alsa
+128 ptm
+136 pts
+153 spi
+166 ttyACM
+180 usb
+188 ttyUSB
+189 usb_device
+216 rfcomm
+226 drm
+237 hidraw
+238 rpmb
+239 ttyGS
+240 usbmon
+241 nvme
+242 mpp_service
+243 bsg
+244 watchdog
+245 tee
+246 iio
+247 ptp
+248 pps
+249 cec
+250 media
+251 rtc
+252 tpm
+253 ttyFIQ
+254 gpiochip
+
+Block devices:
+  1 ramdisk
+  7 loop
+  8 sd
+ 11 sr
+ 31 mtdblock
+ 65 sd
+ 66 sd
+ 67 sd
+ 68 sd
+ 69 sd
+ 70 sd
+ 71 sd
+128 sd
+129 sd
+130 sd
+131 sd
+132 sd
+133 sd
+134 sd
+135 sd
+179 mmc
+253 device-mapper
+254 zram
+259 blkext
+[root@topeet:/]# [  839.128327] dev_t: loading out-of-tree module taints kernel.
+[  839.128428] dev_t: module license 'GPL V2' taints kernel.
+[  839.128439] Disabling lock debugging due to kernel taint
+[  839.129145] major is 200
+[  839.129173] minor is 0
+[  839.129189] register_chrdev_region is ok
+
+
+
+iCharacter devices:
+  1 mem
+  4 /dev/vc/0
+  4 tty
+  4 ttyS
+  5 /dev/tty
+  5 /dev/console
+  5 /dev/ptmx
+  7 vcs
+ 10 misc
+ 13 input
+ 29 fb
+ 81 video4linux
+ 89 i2c
+ 90 mtd
+108 ppp
+116 alsa
+128 ptm
+136 pts
+153 spi
+166 ttyACM
+180 usb
+188 ttyUSB
+189 usb_device
+200 chrdev_name
+216 rfcomm
+226 drm
+237 hidraw
+
+
+
+[root@topeet:/]# l
+sm
+od
+Module                  Size  Used by    Tainted: P  
+dev_t                  16384  0 
+rtk_btusb              57344  0 
+8723du               1560576  0 
+bcmdhd               1048576  0 
+[root@topeet:/]#
+
+
+
+[root@topeet:/]# rmmod dev_t.ko
+[root@topeet:/]# 
+[ 1089.410959] dev_module exit
+
+[root@topeet:~/04]# 
+[ 1412.527420] alloc_chrdev_region is ok
+[ 1412.527497] major is 236
+[ 1412.527506] minor is 0
+[ 1439.607406] dev_module exit
+
+

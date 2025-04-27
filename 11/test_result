@@ -1,0 +1,32 @@
+## test result
+
+[root@topeet:~/11/module]# 
+[root@topeet:~/11/module]# insmod file.ko
+[ 6382.102780] alloc_chrdev_region is ok
+[ 6382.102925] major is 236
+[ 6382.102934] minor is 0
+[ 6382[root@topeet:~/11/module]# .104399] major is 236
+[ 6382.104451] minor is 1
+
+[root@topeet:~/11/module]# 
+[root@topeet:~/11/module]# ls -al /dev/test1
+crw------- 1 root root 236, 0 Apr 24 17:44 /dev/test1
+[root@topeet:~/11/module]# 
+[root@topeet:~/11/module]# ls -al /dev/test2
+crw------- 1 root root 236, 1 Apr 24 17:44 /dev/test2
+[root@topeet:~/11/module]# 
+[root@topeet:~/11/module]# 
+[root@topeet:~/11/module]# cd ../app/
+[root@topeet:~/11/app]# ./app
+[ 6411.740824] This is cdev_test_open
+[ 6411.740989] kbuf is nihao /dev/test1
+[ 641[root@topeet:~/11/app]#1 .741038] This is cdev_test_release
+[ 6411.741112] This is cdev_test_open
+[ 6411.741154] kbuf is nihao /dev/test2
+[ 6411.741192] This is cdev_test_release
+
+[root@topeet:~/11/app]# 
+[root@topeet:~/11/app]#
+
+
+

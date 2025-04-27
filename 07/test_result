@@ -1,0 +1,40 @@
+###
+[root@topeet:~/07/module]# insmod chrdev_fops.ko 
+[ 4629.312515] alloc_chrdev_region is ok
+[ 4629.312629] major is 236
+[ 4629.312638] minor is 0
+[ 4629.312652] 
+[root@topeet:~/07/module]# cdev_add is ok
+
+[root@topeet:~/07/module]# ls /dev/device_test
+/dev/device_test
+[root@topeet:~/07/module]# 
+[root@topeet:~/07/module]# cd ../app/
+
+
+
+
+[root@topeet:~/07/app]# ./app /dev/device_test 
+[ 4695.300177] This is chrdev_open
+open is ok
+Segmentation fault
+[root@topeet:~/07/app]# ./app /dev/device_test read
+[ 4711.119954] This is chrdev_open
+open is ok
+[root@topeet:~/07/app]# [ 4711.120233] This is chrdev_read
+
+[root@topeet:~/07/app]# ./app /dev/device_test write
+o 4726.714744] oTpheins  iiss  ockhrdev_
+ pen
+[root@topeet:~/07/app]# [ 4726.715024] This is chrdev_write
+
+[root@topeet:~/07/app]# 
+[root@topeet:~/07/app]# lsmod
+Module                  Size  Used by    Tainted: P  
+chrdev_fops            16384  0 
+rtk_btusb              57344  0 
+8723du               1560576  0 
+bcmdhd               1048576  0 
+[root@topeet:~/07/app]# rmmod chrdev_fops
+[ 4763.520182] module exit
+[root@topeet:~/07/app]# 

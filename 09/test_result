@@ -1,0 +1,20 @@
+###
+
+[root@topeet:~/09/module]# insmod file.ko 
+[ 5335.007998] alloc_chrdev_region is ok
+[ 5335.008101] major is 236
+[ 5335.00810[root@topeet:~/09/module]# 9] minor is 0
+[ 5335.008121] cdev_add is ok
+
+[root@topeet:~/09/module]# 
+[root@topeet:~/09/module]# 
+[root@topeet:~/09/module]# cd ../app/
+[root@topeet:~/09/app]# ./app
+[ 5344.245446] This is cdev_test_open
+[ 5344.245629] This is cdebuf1 is This is cdev_test_read!
+v_test_read
+[ 5344.2487[root@topeet:~/09/app]# 72] This is cdev_test_write
+[ 5344.248863] kbuf is nihao
+[ 5344.248930] This is cdev_test_release
+
+[root@topeet:~/09/app]# 

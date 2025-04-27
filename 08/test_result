@@ -1,0 +1,25 @@
+##
+
+[root@topeet:~/08]# lsmod
+Module                  Size  Used by    Tainted: P  
+rtk_btusb              57344  0 
+8723du               1560576  0 
+bcmdhd               1048576  0 
+[root@topeet:~/08]# insmod miscdevice.ko 
+[ 5042.978886] misc register is ok
+[root@topeet:~/08]# 
+[root@topeet:~/08]# ls /sys/class/misc
+btrfs-control    device-mapper  loop-control      network_latency     rga        tun       uinput
+cpu_dma_latency  fuse           mali0             network_throughput  rs485_ctl  ubi_ctrl  vendor_storage
+crypto           hw_random      memory_bandwidth  rfkill              test       uhid      watchdog
+[root@topeet:~/08]# 
+[root@topeet:~/08]# ls /sys/class/misc/test
+dev  power  subsystem  uevent
+[root@topeet:~/08]# 
+[root@topeet:~/08]# ls -al /dev/test
+crw------- 1 root root 10, 53 Apr 24 17:22 /dev/test
+[root@topeet:~/08]# rmmod miscdevice.ko 
+[ 5169.623227] misc exit!
+[root@topeet:~/08]# 
+
+

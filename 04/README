@@ -1,0 +1,13 @@
+
+ * 使用说明：
+ * 1. 静态分配设备号：
+ *    insmod dev_t.ko major=200 minor=0
+ *
+ * 2. 动态分配设备号：
+ *    insmod dev_t.ko
+ *
+ * 3. 查看分配的设备号：
+ *    cat /proc/devices
+
+
+test_result  shows

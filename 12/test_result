@@ -1,0 +1,21 @@
+### when error use goto 
+
+[root@topeet:~/12/module]# insmod file.ko 
+[ 6555.253323] alloc_chrdev_region is ok
+[ 6555.253424] major is 235
+[ 6555.[root@topeet:~/12/module]# 253434] minor is 0
+
+[root@topeet:~/12/module]# 
+[root@topeet:~/12/module]# cd ../app/
+[root@topeet:~/12/app]# ./app
+[ 6560.640348] This is cdev_test_open
+[ 6560.640448] This is cdev_test_wri[root@topeet:~/12/app]# te
+[ 6560.640459] kbuf is nihao
+[ 6560.640472] This is cdev_test_release
+
+[root@topeet:~/12/app]# 
+[root@topeet:~/12/app]# rmmod file
+[ 6573.822651] module exit
+[root@topeet:~/12/app]#
+
+

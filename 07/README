@@ -1,0 +1,19 @@
+#####
+
+* 使用说明：
+ * 1. 加载模块：
+ *    insmod chrdev_fops.ko
+ *
+ * 2. 查看设备节点：
+ *    ls -l /dev/device_test
+ *
+ * 3. 测试设备操作：
+ *    读取test
+ *    写入test
+ *
+ * 4. 卸载模块：
+ *    rmmod chrdev_fops
+
+test_result show
+
+
