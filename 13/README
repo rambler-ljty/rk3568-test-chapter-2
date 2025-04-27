@@ -1,0 +1,77 @@
+### GPIO0_B7  HIGH  LED OPEN   LOW LED CLOSE
+###
+###   配置GPIO  1, 复用关系  2，方向 3，数据
+###
+
+[root@topeet:~]# io -r -4 0xfdc2000c
+fdc2000c:  00000001                         ## 复用关系ok
+[root@topeet:~]#
+[root@topeet:~]# io -r -4 0xfdd60008
+fdd60008:  00008044                         ##  方向ok
+[root@topeet:~]#
+[root@topeet:~]# io -r -4 0xfdd60000
+fdd60000:  00000040
+[root@topeet:~]#
+[root@topeet:~]# io -w -4 0xfdd60000 0x80008040  ## 写入 高位 使能点亮   1.高32位1 write 使能  2.16位1高  点亮 通过计算器 确定值
+[root@topeet:~]#
+[root@topeet:~]# io -r -4 0xfdd60000
+fdd60000:  00000040
+[root@topeet:~]#
+[root@topeet:~]# io -w -4 0xfdd60000 0x80000040  ## 写入 低位  关灭
+[root@topeet:~]#
+[root@topeet:~]# io -r -4 0xfdd60000              ## 触发设置为无才能写入生效  
+fdd60000:  00000040
+[root@topeet:~]#
+[root@topeet:~]# echo none > /sys/class/leds/work/trigger   ## 触发设置为无
+[root@topeet:~]#
+[root@topeet:~]#
+[root@topeet:~]#
+[root@topeet:~]# io -w -4 0xfdd60000 0x80008040
+[root@topeet:~]# io -w -4 0xfdd60000 0x80000040
+[root@topeet:~]#
+[root@topeet:/]# io -w -4 0xfdd60000 0x80008040
+[root@topeet:/]#
+[root@topeet:/]# io -r -4 0xfdd60000                   ### 写入后读取，生效了
+fdd60000:  00008040
+[root@topeet:/]#
+[root@topeet:/]# io -w -4 0xfdd60000 0x80000040
+[root@topeet:/]#
+[root@topeet:/]# io -r -4 0xfdd60000
+fdd60000:  00000040
+[root@topeet:/]#
+I
+
+
+
+#######
+
+这个示例展示了如何通过字符设备驱动控制GPIO来操作LED，主要特点包括：
+1.GPIO控制：
+  使用ioremap映射GPIO寄存器
+  通过写入特定值控制GPIO高低电平
+  实现LED的开关功能
+2.硬件访问：
+  定义GPIO寄存器的物理地址
+  使用虚拟地址访问GPIO寄存器
+  正确处理IO内存映射的错误情况
+3.用户接口：
+  通过写入0/1控制LED状态
+  提供简单的命令行接口
+  支持基本的读写操作
+4.错误处理：
+  包含完整的资源清理流程
+  使用goto语句处理初始化错误
+  确保所有资源都被正确释放
+
+根据README文件的说明：
+  GPIO0_B7用于控制LED
+  LED在高电平时点亮，低电平时熄灭
+  需要正确配置GPIO的复用关系、方向和数据
+  写入0x80008040点亮LED，写入0x80000040熄灭LED
+使用方法：
+ 1.加载驱动模块
+ 2.运行应用程序：
+   ./app 1 点亮LED
+   ./app 0 熄灭LED
+
+######

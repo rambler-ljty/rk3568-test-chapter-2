@@ -1,0 +1,38 @@
+### led light or not
+
+[root@topeet:~/13/module]# insmod file.ko 
+[ 5472.106781] alloc_chrdev_region is ok
+[ 5472.106942] major is 236
+[ 5472.106968] minor is 0
+[root@topeet:~/13/module]# 
+[root@topeet:~/13/module]# cd ../app/
+
+#### open light 
+[root@topeet:~/13/app]# ./app 1
+[ 5482.745731] This is cdev_test_open
+[ 5482.745854] test_dev->kbuf[0] is[root@t opeet:~/13/app]# 1
+[ 5482.745863] This is cdev_test_write
+[ 5482.745871] kbuf[0] is 1
+[ 5482.745884] This is cdev_test_release
+
+####  open light
+
+
+###  close light
+
+[root@topeet:~/13/app]# 
+[root@topeet:~/13/app]# ./app 0
+[ 5491.036446] This is cdev_test_open
+[ 5491.036585] test_dev->kbuf[0] is[root@topeet:~/13/app]#  0
+[ 5491.036596] This is cdev_test_write
+[ 5491.036603] kbuf[0] is 0
+[ 5491.036616] This is cdev_test_release
+
+[root@topeet:~/13/app]#
+
+
+####
+
+[root@topeet:~/13/app]# rmmod file.ko
+[ 5639.123235] module exit
+[root@topeet:~/13/app]# 
