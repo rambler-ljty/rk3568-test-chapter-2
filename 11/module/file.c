@@ -144,16 +144,16 @@ static int __init chr_fops_init(void)
 static void __exit chr_fops_exit(void)
 {
 	/* 注销第一个设备 */
-	unregister_chrdev_region(dev1.dev_num, 1);
-	cdev_del(&dev1.cdev_test);
 	device_destroy(dev1.class, dev1.dev_num);
 	class_destroy(dev1.class);
+	cdev_del(&dev1.cdev_test);
+	unregister_chrdev_region(dev1.dev_num, 1);
 
 	/* 注销第二个设备 */
-	unregister_chrdev_region(dev1.dev_num + 1, 1);
-	cdev_del(&dev2.cdev_test);
 	device_destroy(dev2.class, dev1.dev_num + 1);
 	class_destroy(dev2.class);
+	cdev_del(&dev2.cdev_test);
+	unregister_chrdev_region(dev1.dev_num + 1, 1);
 
 	printk("module exit\n");
 }

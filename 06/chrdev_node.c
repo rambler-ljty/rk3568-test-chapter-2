@@ -83,10 +83,10 @@ static int __init chrdev_fops_init(void)
  */
 static void __exit chrdev_fops_exit(void)
 {
-	cdev_del(&cdev_test);                  // 删除字符设备
-	unregister_chrdev_region(dev_num, 1);  // 释放设备号
 	device_destroy(class_test, dev_num);   // 删除设备节点
 	class_destroy(class_test);             // 删除设备类
+	cdev_del(&cdev_test);                  // 删除字符设备
+	unregister_chrdev_region(dev_num, 1);  // 释放设备号
 	printk("module exit\n");
 }
 

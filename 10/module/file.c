@@ -122,10 +122,10 @@ static int __init chr_fops_init(void)
 /* 模块退出函数 */
 static void __exit chr_fops_exit(void)
 {
-	unregister_chrdev_region(dev1.dev_num, 1);  /* 注销设备号 */
-	cdev_del(&dev1.cdev_test);                  /* 删除字符设备 */
 	device_destroy(dev1.class, dev1.dev_num);   /* 销毁设备节点 */
 	class_destroy(dev1.class);                  /* 销毁设备类 */
+	cdev_del(&dev1.cdev_test);                  /* 删除字符设备 */
+	unregister_chrdev_region(dev1.dev_num, 1);  /* 注销设备号 */
 	printk("module exit\n");
 }
 
